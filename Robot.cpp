@@ -76,6 +76,7 @@ public:
 	    //gyroClassOne->resetYaw();
 	    
         drivetrain->resetSensor(); // resets sensor pos
+        CameraServer::GetInstance()->StartAutomaticCapture();
 	}
 
 	/*
