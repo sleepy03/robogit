@@ -43,11 +43,11 @@
 #include "manipulator.h"
 #include "cascade.h"
 #include "Gyro.h"
-
 CController *controllerClass;
 DrivetrainClass *drivetrain;
 manipulator *manipulatorClass;
 Cascade *elevator;
+PowerDistributionPanel *pdp;
 //GyroClass *gyroClassOne;
 
 class Robot : public frc::IterativeRobot {
@@ -60,6 +60,7 @@ class Robot : public frc::IterativeRobot {
 public:
 	void RobotInit()
 	{
+        pdp = new PowerDistributionPanel();
         manipulatorClass = new manipulator();
         controllerClass = new CController();
 	    //gyroClassOne = new GyroClass;
@@ -187,6 +188,9 @@ public:
 		drivetrain->Drive();
         manipulatorClass->manipulatorPower();
         elevator->manualElevator();
+        
+        cout << "Talon Current (p0): " << pdp->GetCurrent(0) << endl;
+        cout << "Victor Current (p13): " << pdp->GetCurrent(13) << endl;
 		
 	}
 
